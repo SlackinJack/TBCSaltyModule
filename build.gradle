@@ -1,0 +1,34 @@
+def VersionMajor = 1
+def VersionMinor = 0
+def VersionRev = 0
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_7
+version = "1.8.9-${VersionMajor}.${VersionMinor}.${VersionRev}"
+
+group = "ca.slackinjack.tbc.module.salty"
+archivesBaseName = "TBCSaltyModule"
+
+minecraft {
+    version = "1.8.9-11.15.1.1722"
+    mappings = "stable_22"
+    makeObfSourceJar = false
+}
+
+repositories {
+    maven { url = "https://jitpack.io/" }
+}
+
+dependencies {
+    runtime files('libs/TBC-1.8.9-3.2.0-RELEASE.jar')
+}
